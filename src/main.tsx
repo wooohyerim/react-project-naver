@@ -37,8 +37,10 @@ const router = createBrowserRouter(
     <Route element={<NavOutlet />}>
       <Route path="/classic" element={<App />} />
       <Route path="/jotai-only" element={<JotaiOnly />} />
+      {/* 
+      트랩 
+      인증 페이지에 주로 사용*/}
       <Route path="*" element={<Navigate to="/classic" />} />
-      {/* 트랩 */}
     </Route>
   )
 )
