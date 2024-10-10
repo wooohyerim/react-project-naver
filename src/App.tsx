@@ -1,5 +1,18 @@
+import { useEffect, useState } from 'react'
+
+import { getPokeApi, Result } from './api/pokeApi'
+
 function App() {
-  return (
+  const [page, setPage] = useState(0)
+  const [list, setList] = useState<Result[]>([])
+
+  useEffect(() => {
+    getPokeApi(page).then((res) => {
+      setList(res.results)
+    })
+  }, [page])
+
+  const snapshot = (
     <>
       <section id="tables">
         <h2>Poke API</h2>
@@ -12,19 +25,41 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Cell</td>
-              </tr>
+              {list.map((item, index) => {
+                return (
+                  <tr key={item.name}>
+                    <th scope="row">{index}</th>
+                    <td>{item.name}</td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
       </section>
-      <button type="button">-</button>
-      <span>1</span>
-      <button type="button">+</button>
+      <button
+        type="button"
+        onClick={() => {
+          setPage(page - 1)
+        }}
+      >
+        -
+      </button>
+      <span>{page}</span>
+      <button
+        type="button"
+        onClick={() => {
+          setPage(page + 1)
+        }}
+      >
+        +
+      </button>
     </>
   )
+
+  console.log(snapshot)
+
+  return snapshot
 }
 
 export default App
