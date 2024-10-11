@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
-import { atom, useAtom, useAtomValue } from 'jotai'
+import { atom, useAtomValue } from 'jotai'
 import { atomFamily } from 'jotai/utils'
 
 import { getPokeApi } from './api/pokeApi'
@@ -9,6 +9,7 @@ import { getPokeApi } from './api/pokeApi'
 const listAtomFamily = atomFamily((page: number) => {
   return atom(async () => {
     const root = await getPokeApi(page)
+
     return root.results
   })
 })

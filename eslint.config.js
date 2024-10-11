@@ -53,6 +53,7 @@ const defaultCodeStyle = {
 }
 
 export default tseslint.config(
+  defaultCodeStyle,
   { ignores: ['dist'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
@@ -72,6 +73,5 @@ export default tseslint.config(
         { allowConstantExport: true }
       ]
     }
-  },
-  defaultCodeStyle
+  }
 )

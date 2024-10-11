@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "eslint --fix --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
     "format": "prettier --write \"**/*.{ts,tsx,cjs,mjs,json,html,css,js,jsx}\" --cache --config prettier.config.mjs"
   },
   "dependencies": {
+    "eslint-plugin-unused-imports": "^4.1.4",
     "jotai": "^2.10.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -23,6 +24,8 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.2",
     "eslint": "^9.11.1",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.12",
     "globals": "^15.9.0",

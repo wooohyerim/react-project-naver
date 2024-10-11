@@ -9,11 +9,13 @@ const pageAtom = atom(0)
 const listAtom = atom(async (get) => {
   const page = get(pageAtom)
   const root = await getPokeApi(page)
+
   return root.results
 })
 
 const Table = () => {
   const list = useAtomValue(listAtom)
+
   return (
     <table className="striped">
       <thead>
