@@ -17,6 +17,8 @@ import {
   RouterProvider
 } from 'react-router-dom'
 
+import AtomsInAtom from './AtomsInAtom.tsx'
+
 const NavOutlet = () => {
   return (
     <>
@@ -30,6 +32,9 @@ const NavOutlet = () => {
         <li>
           <NavLink to="jotai-with-rrd">jotai + react-router-dom</NavLink>
         </li>
+        <li>
+          <NavLink to="atoms-in-atom">Atoms in atom</NavLink>
+        </li>
       </ul>
       <Outlet />
     </>
@@ -42,6 +47,7 @@ const router = createBrowserRouter(
       <Route path="/classic" element={<App />} />
       <Route path="/jotai-only" element={<JotaiOnly />} />
       <Route path="/jotai-with-rrd" element={<JotaiWithRRD />} />
+      <Route path="/atoms-in-atom" element={<AtomsInAtom />} />
       {/* 
       트랩 
       인증 페이지에 주로 사용*/}
