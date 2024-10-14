@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint --fix --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
-    "format": "prettier --write \"**/*.{ts,tsx,cjs,mjs,json,html,css,js,jsx}\" --cache --config prettier.config.mjs"
+    "format": "prettier --write \"**/*.{ts,tsx,cjs,mjs,json,html,css,js,jsx}\" --cache --config prettier.config.js"
   },
   "dependencies": {
     "eslint-plugin-unused-imports": "^4.1.4",
