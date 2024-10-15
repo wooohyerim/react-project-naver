@@ -2,8 +2,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
 import App from './App.tsx'
+import AtomsInAtom from './AtomsInAtom.tsx'
 import JotaiWithRRD from './JotailWithRRD.tsx'
 import JotaiOnly from './JotaiOnly'
+import ReactQueryUsage from './ReactQueryUsage.tsx'
 
 import './index.css'
 
@@ -16,8 +18,6 @@ import {
   Route,
   RouterProvider
 } from 'react-router-dom'
-
-import AtomsInAtom from './AtomsInAtom.tsx'
 
 const NavOutlet = () => {
   return (
@@ -35,6 +35,9 @@ const NavOutlet = () => {
         <li>
           <NavLink to="atoms-in-atom">Atoms in atom</NavLink>
         </li>
+        <li>
+          <NavLink to="react-query-usage">react-query 사용법</NavLink>
+        </li>
       </ul>
       <Outlet />
     </>
@@ -48,7 +51,8 @@ const router = createBrowserRouter(
       <Route path="/jotai-only" element={<JotaiOnly />} />
       <Route path="/jotai-with-rrd" element={<JotaiWithRRD />} />
       <Route path="/atoms-in-atom" element={<AtomsInAtom />} />
-      {/* 
+      <Route path="/react-query-usage" element={<ReactQueryUsage />} />
+      {/*
       트랩 
       인증 페이지에 주로 사용*/}
       <Route path="*" element={<Navigate to="/classic" />} />
