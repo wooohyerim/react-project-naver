@@ -1,16 +1,51 @@
 import { Link, useSearchParams } from 'react-router-dom'
 
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+
+import { getPokeApi } from './api/pokeApi.ts'
+
 const ReactQueryUsage = () => {
   const [params, setParams] = useSearchParams()
   const page = Number(params.get('page')) || 0
 
+  const client = useQueryClient()
+
+  const { data } = useQuery({
+    queryKey: ['pokeList', page],
+    queryFn: () => getPokeApi(page)
+  })
+
   return (
     <>
+      <table className="striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Heading</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data?.results.map((item, index) => {
+            return (
+              <tr key={item.name}>
+                <th scope="row">{index}</th>
+                <td>{item.name}</td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
       {page}
       <button
         onClick={() => {
           setParams({
             page: `${page + 1}`
+          })
+        }}
+        onMouseEnter={async () => {
+          await client.prefetchQuery({
+            queryKey: ['pokeList', page + 1],
+            queryFn: () => getPokeApi(page + 1)
           })
         }}
       >
