@@ -1,1 +1,1 @@
-echo "이건 늙은이 코"
+pnpm format && pnpm lint
