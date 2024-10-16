@@ -8,12 +8,12 @@ const ReactQueryUsage = () => {
   const [params, setParams] = useSearchParams()
   const page = Number(params.get('page')) || 0
 
-  const client = useQueryClient()
-
   const { data } = useQuery({
     queryKey: ['pokeList', page],
     queryFn: () => getPokeApi(page)
   })
+
+  const client = useQueryClient()
 
   return (
     <>

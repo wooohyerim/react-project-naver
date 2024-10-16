@@ -22,6 +22,9 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
+import LoaderReactQuery, { loader } from './LoaderReactQuery.tsx'
+
+// eslint-disable-next-line react-refresh/only-export-components
 const NavOutlet = () => {
   return (
     <>
@@ -40,6 +43,9 @@ const NavOutlet = () => {
         </li>
         <li>
           <NavLink to="react-query-usage">react-query 사용법</NavLink>
+        </li>{' '}
+        <li>
+          <NavLink to="loader-react-query">loader + react-query 사용법</NavLink>
         </li>
       </ul>
       <Outlet />
@@ -55,6 +61,11 @@ const router = createBrowserRouter(
       <Route path="/jotai-with-rrd" element={<JotaiWithRRD />} />
       <Route path="/atoms-in-atom" element={<AtomsInAtom />} />
       <Route path="/react-query-usage" element={<ReactQueryUsage />} />
+      <Route
+        path="/loader-react-query"
+        loader={loader}
+        element={<LoaderReactQuery />}
+      />
       {/*
       트랩 
       인증 페이지에 주로 사용*/}
