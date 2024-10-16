@@ -68,6 +68,12 @@ const ReactQueryUsage = () => {
             justifyContent: 'center',
             alignItems: 'center'
           }}
+          onMouseEnter={async () => {
+            await client.prefetchQuery({
+              queryKey: ['pokeList', page - 1],
+              queryFn: () => getPokeApi(page - 1)
+            })
+          }}
         >
           -
         </div>
