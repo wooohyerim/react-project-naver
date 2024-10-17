@@ -1,6 +1,8 @@
 import {
+  Link,
   LoaderFunctionArgs,
   useLoaderData,
+  useNavigation,
   useSearchParams
 } from 'react-router-dom'
 
@@ -20,15 +22,26 @@ const LoaderReactQuery = () => {
   const loaderData = useLoaderData()
   const [params] = useSearchParams()
   const page = Number(params.get('page')) || 0
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['pokeList', page],
     queryFn: () => getPokeApi(page),
     initialData: loaderData
   })
 
-  console.log(data)
+  const navigation = useNavigation()
 
-  return <>hello</>
+  console.log(navigation.state)
+
+  if (navigation.state === 'loading' || isLoading) {
+    return <>loading...</>
+  }
+
+  return (
+    <>
+      {JSON.stringify(data)}
+      <Link to={`/loader-react-query?page=${page + 1}`}>+</Link>
+    </>
+  )
 }
 
 export default LoaderReactQuery
