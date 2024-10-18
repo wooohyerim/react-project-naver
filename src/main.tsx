@@ -30,22 +30,88 @@ const NavOutlet = () => {
     <>
       <ul>
         <li>
-          <NavLink to="classic">useState 페이징</NavLink>
+          <NavLink
+            to="classic"
+            style={(props) => {
+              if (props.isActive) {
+                return { textDecoration: 'underline' }
+              }
+
+              return {}
+            }}
+          >
+            useState 페이징
+          </NavLink>
         </li>
         <li>
-          <NavLink to="jotai-only">jotai 페이징</NavLink>
+          <NavLink
+            to="jotai-only"
+            style={(props) => {
+              if (props.isActive) {
+                return { textDecoration: 'underline' }
+              }
+
+              return {}
+            }}
+          >
+            jotai 페이징
+          </NavLink>
         </li>
         <li>
-          <NavLink to="jotai-with-rrd">jotai + react-router-dom</NavLink>
+          <NavLink
+            to="jotai-with-rrd"
+            style={(props) => {
+              if (props.isActive) {
+                return { textDecoration: 'underline' }
+              }
+
+              return {}
+            }}
+          >
+            jotai + react-router-dom
+          </NavLink>
         </li>
         <li>
-          <NavLink to="atoms-in-atom">Atoms in atom</NavLink>
+          <NavLink
+            to="atoms-in-atom"
+            style={(props) => {
+              if (props.isActive) {
+                return { textDecoration: 'underline' }
+              }
+
+              return {}
+            }}
+          >
+            Atoms in atom
+          </NavLink>
         </li>
         <li>
-          <NavLink to="react-query-usage">react-query 사용법</NavLink>
+          <NavLink
+            to="react-query-usage"
+            style={(props) => {
+              if (props.isActive) {
+                return { textDecoration: 'underline' }
+              }
+
+              return {}
+            }}
+          >
+            react-query 사용법
+          </NavLink>
         </li>{' '}
         <li>
-          <NavLink to="loader-react-query">loader + react-query 사용법</NavLink>
+          <NavLink
+            to="loader-react-query"
+            style={(props) => {
+              if (props.isActive) {
+                return { textDecoration: 'underline' }
+              }
+
+              return {}
+            }}
+          >
+            loader + react-query 사용법
+          </NavLink>
         </li>
       </ul>
       <Outlet />
