@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
+import DatePicker from 'react-datepicker'
 
 import { getPokeApi, Result } from './api/pokeApi'
+
+import 'react-datepicker/dist/react-datepicker.css'
 
 function App() {
   const [page, setPage] = useState(0)
@@ -14,6 +17,7 @@ function App() {
 
   const snapshot = (
     <>
+      <DatePicker />
       <section id="tables">
         <h2>Poke API</h2>
         <div className="overflow-auto">

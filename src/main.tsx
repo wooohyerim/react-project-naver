@@ -22,7 +22,10 @@ import {
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import LoaderReactQuery, { loader } from './LoaderReactQuery.tsx'
+import LoaderReactQuery, {
+  loader as loader4ReactQuery
+} from './LoaderReactQuery.tsx'
+import ReactTableBasic from './ReactTableBasic.tsx'
 
 // eslint-disable-next-line react-refresh/only-export-components
 const NavOutlet = () => {
@@ -113,6 +116,20 @@ const NavOutlet = () => {
             loader + react-query 사용법
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="react-table-basic"
+            style={(props) => {
+              if (props.isActive) {
+                return { textDecoration: 'underline' }
+              }
+
+              return {}
+            }}
+          >
+            react-table 사용법
+          </NavLink>
+        </li>
       </ul>
       <Outlet />
     </>
@@ -127,9 +144,10 @@ const router = createBrowserRouter(
       <Route path="/jotai-with-rrd" element={<JotaiWithRRD />} />
       <Route path="/atoms-in-atom" element={<AtomsInAtom />} />
       <Route path="/react-query-usage" element={<ReactQueryUsage />} />
+      <Route path="/react-table-basic" element={<ReactTableBasic />} />
       <Route
         path="/loader-react-query"
-        loader={loader}
+        loader={loader4ReactQuery}
         element={<LoaderReactQuery />}
       />
       {/*
