@@ -1,19 +1,12 @@
-import { FC } from 'react'
-
 import Tbody from './Tbody'
 import Thead from './Thead'
 
-export type IData = {
-  컬럼이름: string
-  컬럼값: string
-}
-
-export type ITable = {
+export type ITable<T extends object> = {
   columns: string[]
-  data: IData[]
+  data: T[]
 }
 
-const Table: FC<ITable> = ({ columns, data }) => {
+const Table = <T extends object>({ columns, data }: ITable<T>) => {
   return (
     <table className="striped">
       <Thead columns={columns} />

@@ -1,11 +1,11 @@
 import { ITable } from './Table'
 
-const Tbody = ({ data, columns }: ITable) => {
+const Tbody = <T extends object>({ data, columns }: ITable<T>) => {
   if (data.length <= 0) {
     return (
       <tbody>
         <tr>
-          <td>데이터가 없습니다.</td>
+          <td colSpan={columns.length}>데이터가 없어요</td>
         </tr>
       </tbody>
     )
@@ -13,15 +13,11 @@ const Tbody = ({ data, columns }: ITable) => {
 
   return (
     <tbody>
-      {data.map((item, index) => {
+      {data.map((record) => {
         return (
-          <tr key={index}>
-            {columns.map((_, index) => {
-              return (
-                <td scope="col" key={index}>
-                  {item.컬럼값}
-                </td>
-              )
+          <tr>
+            {Object.values(record).map((item, index) => {
+              return <td key={index}>{item}</td>
             })}
           </tr>
         )

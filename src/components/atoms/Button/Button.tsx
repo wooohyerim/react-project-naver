@@ -1,8 +1,8 @@
 import { FC, MouseEventHandler, PropsWithChildren } from 'react'
 
 type IButton = {
-  type: 'submit' | 'reset' | 'button'
-  onClick: MouseEventHandler<HTMLButtonElement>
+  type?: 'submit' | 'reset' | 'button'
+  onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
 const Button: FC<PropsWithChildren<IButton>> = ({
