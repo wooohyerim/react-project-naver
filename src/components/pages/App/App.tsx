@@ -1,17 +1,26 @@
 import { useEffect, useState } from 'react'
 import DatePicker from 'react-datepicker'
 
-import { getPokeApi, Result } from './api/pokeApi'
+import { getPokeApi } from '../../../api/pokeApi'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
+import Button from '../../atoms/Button/Button'
+import Table, { IData } from '../../atoms/Table/Table'
+
 function App() {
   const [page, setPage] = useState(0)
-  const [list, setList] = useState<Result[]>([])
+  const [list, setList] = useState<IData[]>([])
 
   useEffect(() => {
     getPokeApi(page).then((res) => {
-      setList(res.results)
+      const data: IData[] = res.results.map((item, index) => {
+        return {
+          컬럼이름: `${index}`,
+          컬럼값: item.name
+        }
+      })
+      setList(data)
     })
   }, [page])
 
@@ -21,43 +30,26 @@ function App() {
       <section id="tables">
         <h2>Poke API</h2>
         <div className="overflow-auto">
-          <table className="striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Heading</th>
-              </tr>
-            </thead>
-            <tbody>
-              {list.map((item, index) => {
-                return (
-                  <tr key={item.name}>
-                    <th scope="row">{index}</th>
-                    <td>{item.name}</td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
+          <Table columns={['#', 'Heading']} data={list} />
         </div>
       </section>
-      <button
+      <Button
         type="button"
         onClick={() => {
           setPage(page - 1)
         }}
       >
         -
-      </button>
+      </Button>
       <span>{page}</span>
-      <button
+      <Button
         type="button"
         onClick={() => {
           setPage(page + 1)
         }}
       >
         +
-      </button>
+      </Button>
     </>
   )
 

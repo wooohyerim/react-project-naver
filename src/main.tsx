@@ -1,8 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import App from './App.tsx'
 import AtomsInAtom from './AtomsInAtom.tsx'
+import App from './components/pages/App/App.tsx'
 import JotaiWithRRD from './JotailWithRRD.tsx'
 import JotaiOnly from './JotaiOnly'
 import ReactQueryUsage from './ReactQueryUsage.tsx'
